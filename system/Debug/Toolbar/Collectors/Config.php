@@ -35,7 +35,7 @@ class Config
             'baseURL'     => $config->baseURL,
             'timezone'    => app_timezone(),
             'locale'      => Services::request()->getLocale(),
-            'cspEnabled'  => $config->cspEnabled,
+            'CSPEnabled'  => $config->CSPEnabled,
         ];
     }
 }

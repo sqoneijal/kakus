@@ -3,9 +3,11 @@
       "esbuild": "0.20.1"
    },
    "scripts": {
-      "dev": "esbuild --define:process.env.NODE_ENV=\\\"development\\\" ./src/App.jsx --bundle --watch --serve=8081 --alias:~=./src --outdir=./public/bundle --loader:.svg=copy --loader:.eot=copy --loader:.png=dataurl --loader:.woff=copy --loader:.woff2=copy --loader:.ttf=copy --sourcemap --log-limit=0 --inject:./src/assets/js/pace.min.js --inject:./src/assets/js/datatables.bundle.js"
+      "dev": "esbuild --define:process.env.NODE_ENV=\\\"development\\\" ./src/App.jsx --bundle --watch --serve=8081 --alias:~=./src --outdir=./public/bundle --loader:.svg=copy --loader:.eot=copy --loader:.png=dataurl --loader:.woff=copy --loader:.woff2=copy --loader:.ttf=copy --sourcemap --log-limit=0 --inject:./src/assets/js/pace.min.js --inject:./src/assets/js/datatables.bundle.js --loader=jsx",
+      "build": "./esbuild.config.js"
    },
    "dependencies": {
+      "axios": "^1.6.7",
       "datatables.net": "^2.0.0",
       "datatables.net-buttons": "^3.0.0",
       "datatables.net-buttons-bs5": "^3.0.0",
@@ -22,7 +24,17 @@
       "datatables.net-rowreorder-bs5": "^1.5.0",
       "datatables.net-scroller-bs5": "^2.4.0",
       "datatables.net-select-bs5": "^2.0.0",
+      "lozad": "^1.16.0",
+      "moment": "^2.30.1",
       "react": "^18.2.0",
-      "react-dom": "^18.2.0"
+      "react-bootstrap": "^2.10.1",
+      "react-dom": "^18.2.0",
+      "react-flatpickr": "^3.10.13",
+      "react-loader-spinner": "^6.1.6",
+      "react-switch-case": "^1.5.1",
+      "sweetalert2": "^11.10.5",
+      "toastr": "^2.1.4",
+      "uid": "^2.0.2",
+      "wnumb": "^1.2.0"
    }
 }

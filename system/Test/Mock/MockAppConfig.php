@@ -18,7 +18,7 @@ class MockAppConfig extends App
     public string $baseURL         = 'http://example.com/';
     public string $uriProtocol     = 'REQUEST_URI';
     public array $proxyIPs         = [];
-    public bool $cspEnabled        = false;
+    public bool $CSPEnabled        = false;
     public string $defaultLocale   = 'en';
     public bool $negotiateLocale   = false;
     public array $supportedLocales = [

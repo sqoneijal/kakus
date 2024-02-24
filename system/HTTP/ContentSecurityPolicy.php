@@ -234,7 +234,7 @@ class ContentSecurityPolicy
      *
      * @var bool
      */
-    protected $cspEnabled = false;
+    protected $CSPEnabled = false;
 
     /**
      * Constructor.
@@ -244,7 +244,7 @@ class ContentSecurityPolicy
     public function __construct(ContentSecurityPolicyConfig $config)
     {
         $appConfig        = config(App::class);
-        $this->cspEnabled = $appConfig->cspEnabled;
+        $this->CSPEnabled = $appConfig->CSPEnabled;
 
         foreach (get_object_vars($config) as $setting => $value) {
             if (property_exists($this, $setting)) {
@@ -266,7 +266,7 @@ class ContentSecurityPolicy
      */
     public function enabled(): bool
     {
-        return $this->cspEnabled;
+        return $this->CSPEnabled;
     }
 
     /**

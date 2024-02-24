@@ -1,4 +1,4 @@
-import "datatables.net/js/jquery.dataTables";
+import "datatables.net/js/dataTables";
 import "datatables.net-bs5/js/dataTables.bootstrap5";
 import "datatables.net-buttons/js/dataTables.buttons";
 import "datatables.net-buttons-bs5/js/buttons.bootstrap5";

@@ -41,7 +41,7 @@ trait ResponseTrait
      *
      * @deprecated Use $this->CSP->enabled() instead.
      */
-    protected $cspEnabled = false;
+    protected $CSPEnabled = false;
 
     /**
      * Content security policy handler

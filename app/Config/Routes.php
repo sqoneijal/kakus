@@ -1,8 +1,8 @@
 <?php
 
-use CodeIgniter\Router\RouteCollection;
+use Config\Routes\Login;
 
-/**
- * @var RouteCollection $routes
- */
-$routes->get('/', 'Home::index');
+$routes->get('getfile/(:any)', 'GetFile::index/$1');
+
+$login = new Login();
+$login->render($routes);

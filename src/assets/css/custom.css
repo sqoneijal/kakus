@@ -1,0 +1,20 @@
+tbody > tr > td > button {
+   background: transparent;
+   border: 0;
+   font-weight: 500;
+   color: #1b84ff;
+}
+tbody > tr > td > button:hover {
+   text-decoration: underline;
+   transition: all 0.3s ease-in-out;
+}
+table#datatable {
+   min-height: 100px;
+}
+.flatpickr-day.today,
+.flatpickr-day.selected {
+   font-weight: bold !important;
+}
+input[type="file"]::-webkit-file-upload-button {
+   display: none;
+}

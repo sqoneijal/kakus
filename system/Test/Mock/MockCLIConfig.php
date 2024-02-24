@@ -24,7 +24,7 @@ class MockCLIConfig extends App
     public bool $CSRFRegenerate    = true;
     public $CSRFExcludeURIs        = ['http://example.com'];
     public string $CSRFSameSite    = 'Lax';
-    public bool $cspEnabled        = false;
+    public bool $CSPEnabled        = false;
     public string $defaultLocale   = 'en';
     public bool $negotiateLocale   = false;
     public array $supportedLocales = [
