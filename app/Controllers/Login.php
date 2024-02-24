@@ -23,8 +23,26 @@ class Login extends BaseController
 
       $validation = new Validate();
       if ($this->validate($validation->submit())) {
+         $agent = $this->request->getUserAgent();
+
+         if ($agent->isBrowser()) {
+            $currentAgent = $agent->getBrowser() . ' ' . $agent->getVersion();
+         } elseif ($agent->isRobot()) {
+            $currentAgent = $agent->getRobot();
+         } elseif ($agent->isMobile()) {
+            $currentAgent = $agent->getMobile();
+         } else {
+            $currentAgent = 'Unidentified User Agent';
+         }
+
+         $userAgent = [
+            'currentAgent' => $currentAgent,
+            'platform' => $agent->getPlatform()
+         ];
+
+
          $model = new Model();
-         $submit = $model->submit(array_merge($this->post, ['ipAddress' => $this->request->getIPAddress()]));
+         $submit = $model->submit(array_merge($this->post, $userAgent, ['ipAddress' => $this->request->getIPAddress()]));
 
          $response = array_merge($submit, ['errors' => []]);
       } else {
@@ -32,5 +50,12 @@ class Login extends BaseController
          $response['errors'] = \Config\Services::validation()->getErrors();
       }
       return $this->respond($response);
+   }
+
+   public function logout()
+   {
+      $session = \Config\Services::session();
+      $session->destroy();
+      return redirect()->to('/');
    }
 }

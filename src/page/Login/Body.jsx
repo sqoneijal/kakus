@@ -30,6 +30,8 @@ const Body = () => {
          h.notification(data.status, data.msg_response);
 
          if (!data.status) return;
+
+         window.open("/controlpanel", "_parent");
       });
       fetch.finally(() => {
          setIsSubmit(false);
@@ -50,7 +52,11 @@ const Body = () => {
                         {h.form_text(
                            `Username/Email`,
                            `username`,
-                           { onChange: (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value })), value: h.parse(`username`, input) },
+                           {
+                              onChange: (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value })),
+                              value: h.parse(`username`, input),
+                              autoFocus: true,
+                           },
                            true,
                            errors
                         )}

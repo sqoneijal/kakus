@@ -18,7 +18,7 @@ class Login extends Common
          $session->set('id_user', $dataUsers['id']);
 
          $this->updateLastLogin($dataUsers['id']);
-         $this->updateLoginLogs(array_merge($dataUsers, ['ipAddress' => $post['ipAddress']]));
+         $this->updateLoginLogs(array_merge($post, ['id' => $dataUsers['id']]));
 
          $response['status'] = true;
          $response['msg_response'] = 'Login berhasil, halaman segera dialihkan.';
@@ -53,6 +53,8 @@ class Login extends Common
       }
 
       $data['id_users'] = $post['id'];
+      $data['device'] = $post['currentAgent'] . ' - ' . $post['platform'];
+      $data['time'] = new RawSql('now()');
 
       $table = $this->db->table('tb_users_login_logs');
       $table->insert($data);

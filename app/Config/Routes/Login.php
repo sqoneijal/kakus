@@ -23,6 +23,7 @@ class Login extends BaseConfig
    public function defaultRoutes($routes): void
    {
       $routes->get('/', 'Login::index');
+      $routes->get('logout', 'Login::logout');
 
       $routes->post('submit', 'Login::submit');
    }
