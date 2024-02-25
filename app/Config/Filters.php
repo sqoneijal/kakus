@@ -8,6 +8,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
+use App\Filters\ControlPanel;
 
 class Filters extends BaseConfig
 {
@@ -24,6 +25,7 @@ class Filters extends BaseConfig
       'honeypot'      => Honeypot::class,
       'invalidchars'  => InvalidChars::class,
       'secureheaders' => SecureHeaders::class,
+      'ControlPanel' => ControlPanel::class,
    ];
 
    /**
@@ -36,12 +38,12 @@ class Filters extends BaseConfig
       'before' => [
          // 'honeypot',
          // 'csrf',
-         // 'invalidchars',
+         'invalidchars',
       ],
       'after' => [
          // 'toolbar',
          // 'honeypot',
-         // 'secureheaders',
+         'secureheaders',
       ],
    ];
 

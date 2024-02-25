@@ -5,9 +5,12 @@ import "~/assets/css/style.bundle.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Bars } from "react-loader-spinner";
+import { Provider } from "react-redux";
 import Switch, { Case } from "react-switch-case";
+import store from "./store";
 
 const Login = React.lazy(() => import("./page/Login/Context"));
+const ControlPanel = React.lazy(() => import("./page/ControlPanel/Context"));
 
 if (process.env.NODE_ENV === "development") {
    new EventSource("http://localhost:8081/esbuild").addEventListener("change", () => location.reload());
@@ -37,6 +40,9 @@ const App = () => {
                <Case value="/login">
                   <Login />
                </Case>
+               <Case value="/controlpanel">
+                  <ControlPanel />
+               </Case>
             </Switch>
          </div>
       </React.Suspense>
@@ -44,4 +50,8 @@ const App = () => {
 };
 const container = document.getElementById("kt_app_root");
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+   <Provider store={store}>
+      <App />
+   </Provider>
+);

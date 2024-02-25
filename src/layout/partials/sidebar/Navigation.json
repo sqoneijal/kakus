@@ -1,0 +1,201 @@
+[
+   {
+      "label": "Dashboard",
+      "icon": "ki-outline ki-element-11 fs-2",
+      "pathname": "/",
+      "sub": false
+   },
+   {
+      "label": "Database",
+      "icon": "ki-outline ki-data fs-2",
+      "pathname": "/database",
+      "sub": true,
+      "child": [
+         {
+            "label": "Jenis Simpanan",
+            "pathname": "/database/jenissimpanan",
+            "sub": false
+         },
+         {
+            "label": "Pinjaman Bunga",
+            "pathname": "/database/pinjamanbunga",
+            "sub": false
+         },
+         {
+            "label": "Jenis Akun",
+            "pathname": "/database/jenisakun",
+            "sub": false
+         },
+         {
+            "label": "Data Kas",
+            "pathname": "/database/kas",
+            "sub": false
+         },
+         {
+            "label": "Lama Angsuran",
+            "pathname": "/database/lamaangsuran",
+            "sub": false
+         },
+         {
+            "label": "Data Departemen",
+            "pathname": "/database/departemen",
+            "sub": false
+         },
+         {
+            "label": "Data Anggota",
+            "pathname": "/database/anggota",
+            "sub": false
+         },
+         {
+            "label": "Data Pengguna",
+            "pathname": "/database/pengguna",
+            "sub": false
+         }
+      ]
+   },
+   {
+      "label": "Transaksi Kas",
+      "icon": "ki-outline ki-lots-shopping fs-2",
+      "pathname": "/transaksikas",
+      "sub": true,
+      "child": [
+         {
+            "label": "Pemasukan",
+            "pathname": "/transaksikas/pemasukan",
+            "sub": false
+         },
+         {
+            "label": "Pengeluaran",
+            "pathname": "/transaksikas/pengeluaran",
+            "sub": false
+         },
+         {
+            "label": "Transfer",
+            "pathname": "/transaksikas/transfer",
+            "sub": false
+         }
+      ]
+   },
+   {
+      "label": "Simpanan",
+      "icon": "ki-outline ki-package fs-2",
+      "pathname": "/simpanan",
+      "sub": true,
+      "child": [
+         {
+            "label": "Setoran Tunai",
+            "pathname": "/simpanan/setorantunai",
+            "sub": false
+         },
+         {
+            "label": "Penarikan Tunai",
+            "pathname": "/simpanan/penarikantunai",
+            "sub": false
+         }
+      ]
+   },
+   {
+      "label": "Pinjaman",
+      "icon": "ki-outline ki-tag fs-2",
+      "pathname": "/pinjaman",
+      "sub": true,
+      "child": [
+         {
+            "label": "Data Pengajuan",
+            "pathname": "/pinjaman/pengajuan",
+            "sub": false
+         },
+         {
+            "label": "Data Pinjaman",
+            "pathname": "/pinjaman/pinjaman",
+            "sub": false
+         },
+         {
+            "label": "Pinjaman Lunas",
+            "pathname": "/pinjaman/pinjamanlunas",
+            "sub": false
+         },
+         {
+            "label": "Data Angsuran",
+            "pathname": "/pinjaman/angsuran",
+            "sub": false
+         }
+      ]
+   },
+   {
+      "label": "Laporan",
+      "icon": "ki-outline ki-abstract-26 fs-2",
+      "pathname": "/laporan",
+      "sub": true,
+      "child": [
+         {
+            "label": "Kas Anggota",
+            "pathname": "/laporan/kasanggota",
+            "sub": false
+         },
+         {
+            "label": "Jatuh Tempo",
+            "pathname": "/laporan/jatuhtempo",
+            "sub": false
+         },
+         {
+            "label": "Transaksi Kas",
+            "pathname": "/laporan/transaksikas",
+            "sub": false
+         },
+         {
+            "label": "Buku Besar",
+            "pathname": "/laporan/bukubesar",
+            "sub": false
+         },
+         {
+            "label": "Neraca Saldo",
+            "pathname": "/laporan/neracasaldo",
+            "sub": false
+         },
+         {
+            "label": "Kas Simpanan",
+            "pathname": "/laporan/kassimpanan",
+            "sub": false
+         },
+         {
+            "label": "Kas Pinjaman",
+            "pathname": "/laporan/kaspinjaman",
+            "sub": false
+         },
+         {
+            "label": "Saldo Kas",
+            "pathname": "/laporan/saldokas",
+            "sub": false
+         },
+         {
+            "label": "Laba Rugi",
+            "pathname": "/laporan/labarugi",
+            "sub": false
+         },
+         {
+            "label": "SHU",
+            "pathname": "/laporan/shu",
+            "sub": false
+         }
+      ]
+   },
+   {
+      "label": "Pengaturan",
+      "icon": "ki-outline ki-setting-2 fs-2",
+      "pathname": "/pengaturan",
+      "sub": true,
+      "child": [
+         {
+            "label": "Identitas Koperasi",
+            "pathname": "/pengaturan/identitaskoperasi",
+            "sub": false
+         },
+         {
+            "label": "Suku Bunga",
+            "pathname": "/pengaturan/sukubunga",
+            "sub": false
+         }
+      ]
+   }
+]

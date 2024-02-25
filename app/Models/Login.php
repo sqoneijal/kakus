@@ -13,15 +13,20 @@ class Login extends Common
       $response = ['status' => false, 'msg_response' => 'Terjadi sesuatu kesalahan.', 'errors' => []];
       try {
          $dataUsers = $this->getDataUsers($post);
+         if ($dataUsers['status']) {
+            $session = \Config\Services::session();
+            $session->set('id_user', $dataUsers['content']['id']);
+            $session->set('username', $dataUsers['content']['username']);
+            $session->set('email', $dataUsers['content']['email']);
 
-         $session = \Config\Services::session();
-         $session->set('id_user', $dataUsers['id']);
+            $this->updateLastLogin($dataUsers['content']['id']);
+            $this->updateLoginLogs(array_merge($post, ['id' => $dataUsers['content']['id']]));
 
-         $this->updateLastLogin($dataUsers['id']);
-         $this->updateLoginLogs(array_merge($post, ['id' => $dataUsers['id']]));
-
-         $response['status'] = true;
-         $response['msg_response'] = 'Login berhasil, halaman segera dialihkan.';
+            $response['status'] = true;
+            $response['msg_response'] = 'Login berhasil, halaman segera dialihkan.';
+         } else {
+            $response['msg_response'] = $dataUsers['msg_response'];
+         }
       } catch (\Exception $e) {
          $response['msg_response'] = $e->getMessage();
       }
