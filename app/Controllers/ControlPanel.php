@@ -15,11 +15,4 @@ class ControlPanel extends BaseController
 
       $this->template($this->data);
    }
-
-   public function init(): object
-   {
-      $model = new Model();
-      $content = $model->initSession();
-      return $this->respond($content);
-   }
 }

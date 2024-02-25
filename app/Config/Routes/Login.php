@@ -24,6 +24,7 @@ class Login extends BaseConfig
    {
       $routes->get('/', 'Login::index');
       $routes->get('logout', 'Login::logout');
+      $routes->get('init', 'Login::init');
 
       $routes->post('submit', 'Login::submit');
    }

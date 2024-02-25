@@ -19,8 +19,8 @@ class Common extends Model
       try {
          $table = $this->db->table('tb_users');
          $table->select('id, avatar, nama, email, username, role, user_modified, uploaded, modified, last_login');
-         $table->where('username', $post['username']);
-         $table->orWhere('email', $post['username']);
+         $table->where('username', @$post['username']);
+         $table->orWhere('email', @$post['username']);
 
          $get = $table->get();
          $data = $get->getRowArray();

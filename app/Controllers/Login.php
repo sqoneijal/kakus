@@ -58,4 +58,12 @@ class Login extends BaseController
       $session->destroy();
       return redirect()->to('/');
    }
+
+   public function init(): object
+   {
+      $session = \Config\Services::session();
+      $model = new Model();
+      $content = $model->getDataUsers($session->get());
+      return $this->respond($content);
+   }
 }

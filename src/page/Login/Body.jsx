@@ -31,7 +31,7 @@ const Body = () => {
 
          if (!data.status) return;
 
-         window.open("/controlpanel", "_parent");
+         window.location.reload();
       });
       fetch.finally(() => {
          setIsSubmit(false);

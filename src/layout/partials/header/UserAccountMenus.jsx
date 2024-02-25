@@ -1,17 +1,28 @@
 import lozad from "lozad";
 import React, { useLayoutEffect } from "react";
 import { Dropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as h from "~/Helpers";
+import { buttonConfig, filter, position, setModule, showButton } from "~/redux";
 
 const UserAccountMenus = () => {
    const { init } = useSelector((e) => e.redux);
+   const dispatch = useDispatch();
 
    useLayoutEffect(() => {
       lozad().observe();
       return () => {};
    }, []);
+
+   const handleClickProfile = () => {
+      document.title = "Profile";
+      dispatch(position([]));
+      dispatch(filter({}));
+      dispatch(setModule({}));
+      dispatch(showButton(false));
+      dispatch(buttonConfig({}));
+   };
 
    return (
       <Dropdown.Menu
@@ -31,7 +42,7 @@ const UserAccountMenus = () => {
          </Dropdown.Item>
          <Dropdown.Divider as="div" bsPrefix="separator my-2" />
          <Dropdown.Item as="div" bsPrefix="menu-item px-5">
-            <Link className="menu-link px-5" to={"/profile"}>
+            <Link className="menu-link px-5" to={"/profile"} onClick={handleClickProfile}>
                Profile
             </Link>
          </Dropdown.Item>

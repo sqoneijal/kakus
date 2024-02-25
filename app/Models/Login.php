@@ -8,6 +8,12 @@ use CodeIgniter\Database\RawSql;
 class Login extends Common
 {
 
+   public function initLogin(): array
+   {
+      $session = \Config\Services::session();
+      return $this->getDataUsers($session->get());
+   }
+
    public function submit(array $post): array
    {
       $response = ['status' => false, 'msg_response' => 'Terjadi sesuatu kesalahan.', 'errors' => []];
@@ -44,7 +50,7 @@ class Login extends Common
    {
       $client = \Config\Services::curlrequest();
 
-      $response = $client->request('GET', 'http://www.geoplugin.net/json.gp?ip=' . $post['ipAddress']);
+      $response = $client->request('GET', 'http://www.geoplugin.net/json.gp');
       $body = $response->getBody();
       $geo = json_decode($body, true);
 

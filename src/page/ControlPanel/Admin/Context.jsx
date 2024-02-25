@@ -4,6 +4,7 @@ import { Bars } from "react-loader-spinner";
 import { Route, Routes } from "react-router-dom";
 
 const Dashboard = React.lazy(() => import("./Dashboard/Context"));
+const Profile = React.lazy(() => import("./Profile/Context"));
 
 const Context = () => {
    return (
@@ -25,6 +26,7 @@ const Context = () => {
             <Container fluid id="kt_app_content_container" className="app-container">
                <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="profile" element={<Profile />} />
                </Routes>
             </Container>
          </div>

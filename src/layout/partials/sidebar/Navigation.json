@@ -6,49 +6,14 @@
       "sub": false
    },
    {
-      "label": "Database",
+      "label": "Referensi",
       "icon": "ki-outline ki-data fs-2",
-      "pathname": "/database",
+      "pathname": "/referensi",
       "sub": true,
       "child": [
          {
-            "label": "Jenis Simpanan",
-            "pathname": "/database/jenissimpanan",
-            "sub": false
-         },
-         {
-            "label": "Pinjaman Bunga",
-            "pathname": "/database/pinjamanbunga",
-            "sub": false
-         },
-         {
-            "label": "Jenis Akun",
-            "pathname": "/database/jenisakun",
-            "sub": false
-         },
-         {
-            "label": "Data Kas",
-            "pathname": "/database/kas",
-            "sub": false
-         },
-         {
-            "label": "Lama Angsuran",
-            "pathname": "/database/lamaangsuran",
-            "sub": false
-         },
-         {
-            "label": "Data Departemen",
-            "pathname": "/database/departemen",
-            "sub": false
-         },
-         {
-            "label": "Data Anggota",
-            "pathname": "/database/anggota",
-            "sub": false
-         },
-         {
-            "label": "Data Pengguna",
-            "pathname": "/database/pengguna",
+            "label": "Jenis Septiktank",
+            "pathname": "/referensi/septiktank",
             "sub": false
          }
       ]

@@ -1,10 +1,9 @@
 import React, { useLayoutEffect, useState } from "react";
 import { Bars } from "react-loader-spinner";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import Switch, { Case } from "react-switch-case";
 import * as h from "~/Helpers";
-import { setInit } from "~/redux";
 
 const LayoutPartialsHeader = React.lazy(() => import("~/layout/partials/Header"));
 const LayoutPartialsSidebar = React.lazy(() => import("~/layout/partials/Sidebar"));
@@ -13,46 +12,19 @@ const Admin = React.lazy(() => import("./Admin/Context"));
 
 const Context = () => {
    const { init } = useSelector((e) => e.redux);
-   const dispatch = useDispatch();
-
-   // bool
-   const [isLoading, setIsLoading] = useState(true);
 
    // string
    const [toolbarFilter, setToolbarFilter] = useState("");
 
-   const initPage = () => {
-      const fetch = h.get(`/controlpanel/init`, {}, true);
-      fetch.then((res) => {
-         if (typeof res === "undefined") return;
-
-         const { data } = res;
-
-         if (typeof data.code !== "undefined" && h.parse("code", data) !== 200) {
-            h.notification(false, h.parse("message", data));
-            return;
-         }
-
-         if (!data.status) return window.open("/", "_parent");
-
-         dispatch(setInit(data));
-      });
-      fetch.finally(() => {
-         setIsLoading(false);
-      });
-   };
-
    useLayoutEffect(() => {
       bodyInit();
       appRootInit();
-      initPage();
       return () => {};
    }, []);
 
    const props = { toolbarFilter, setToolbarFilter };
 
    return (
-      !isLoading &&
       h.objLength(init) && (
          <React.Suspense
             fallback={
@@ -68,7 +40,7 @@ const Context = () => {
                   wrapperClass="page-loader flex-column bg-dark bg-opacity-25"
                />
             }>
-            <BrowserRouter basename="controlpanel">
+            <BrowserRouter basename="/">
                <div className="app-page flex-column flex-column-fluid" id="kt_app_page">
                   <LayoutPartialsHeader />
                   <div className="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
