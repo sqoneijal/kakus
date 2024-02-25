@@ -1,18 +1,19 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Bars } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import Switch, { Case } from "react-switch-case";
 import * as h from "~/Helpers";
 import { setInit } from "~/redux";
 
 const LayoutPartialsHeader = React.lazy(() => import("~/layout/partials/Header"));
 const LayoutPartialsSidebar = React.lazy(() => import("~/layout/partials/Sidebar"));
 const LayoutPartialsToolbar = React.lazy(() => import("~/layout/partials/Toolbar"));
+const Admin = React.lazy(() => import("./Admin/Context"));
 
 const Context = () => {
    const { init } = useSelector((e) => e.redux);
    const dispatch = useDispatch();
-   const boxRef = useRef(null);
 
    // bool
    const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +76,11 @@ const Context = () => {
                      <div className="app-main flex-column flex-row-fluid" id="kt_app_main">
                         <div className="d-flex flex-column flex-column-fluid">
                            <LayoutPartialsToolbar {...props} />
-                           {/* <Context {...props} /> */}
+                           <Switch condition={h.parse("role", init)}>
+                              <Case value={1}>
+                                 <Admin />
+                              </Case>
+                           </Switch>
                         </div>
                      </div>
                   </div>
