@@ -15,4 +15,13 @@ class ControlPanel extends BaseController
 
       $this->template($this->data);
    }
+
+   public function initPage(): object
+   {
+      $model = new Model();
+      $content = [
+         'daftarResponden' => $model->initPage()
+      ];
+      return $this->respond($content);
+   }
 }

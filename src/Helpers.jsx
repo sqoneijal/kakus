@@ -582,7 +582,7 @@ export const detail_label = (label, value, span = 0) => {
             {label}
          </Col>
          <Col md={12 - span} sm={12}>
-            <span title={value} className={`fw-bold fs-6 text-gray-800}`}>
+            <span title={value} className={`fw-bold fs-6 text-gray-800`}>
                {value || "-"}
             </span>
          </Col>

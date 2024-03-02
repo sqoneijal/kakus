@@ -11,6 +11,7 @@ class ControlPanel extends BaseConfig
    {
       $routes->group('/', ['filter' => 'ControlPanel'], function ($routes) {
          $routes->get('/', 'ControlPanel::index');
+         $routes->get('initpage', 'ControlPanel::initPage');
 
          $this->profile($routes);
          $this->referensi($routes);
