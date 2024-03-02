@@ -1,4 +1,5 @@
 import axios from "axios";
+import DataTables from "datatables.net";
 import $ from "jquery";
 import lozad from "lozad";
 import moment from "moment";
@@ -388,8 +389,49 @@ const DatatableServerSide = ({ ...content }) => {
       },
    ];
 
-   dt = $(`${parse("id", content) ? parse("id", content) : "#datatable"}`).DataTable({
-      responsive: true,
+   DataTables.defaults = {
+      ...DataTables.defaults,
+      renderer: "bootstrap",
+   };
+   DataTables.ext.classes = {
+      ...DataTables.ext.classes,
+      container: "dataTables_wrapper dt-bootstrap4 no-footer",
+      empty: { row: "dataTables_empty" },
+      processing: { container: "dataTables_processing" },
+      length: { container: "dataTables_length", select: "form-select form-select-sm form-select-solid" },
+      info: { container: "dataTables_info" },
+   };
+
+   DataTables.ext.renderer.pagingContainer.bootstrap = (settings, buttonEls) => {
+      return $("<ul/>").addClass("pagination").append(buttonEls);
+   };
+
+   DataTables.ext.renderer.pagingButton.bootstrap = (settings, buttonType, content, active, disabled) => {
+      const btnClasses = ["paginate_button", "page-item"];
+
+      if (active) {
+         btnClasses.push("active");
+      }
+
+      if (disabled) {
+         btnClasses.push("disabled");
+      }
+
+      const li = $("<li>").addClass(btnClasses.join(" "));
+      const a = $("<a>", {
+         href: disabled ? null : "#",
+         class: "page-link",
+      })
+         .html(content)
+         .appendTo(li);
+
+      return {
+         display: li,
+         clicker: a,
+      };
+   };
+
+   dt = new DataTables(`${parse("id", content) ? parse("id", content) : "#datatable"}`, {
       processing: true,
       serverSide: true,
       pageLength: 10,
@@ -407,14 +449,10 @@ const DatatableServerSide = ({ ...content }) => {
       columnDefs: content.columnDefs ? renderColumnDefs : [],
       language: {
          processing: '<div class="d-flex flex-column flex-center"><span class="text-gray-600">Loading...</span></div>',
-         emptyTable:
-            '<div class="d-flex flex-column flex-center">' +
-            `<img src="/getfile/empty.png" class="mw-400px">` +
-            '<div class="fs-1 fw-bolder text-dark mb-4">Tidak ada item yang ditemukan.</div>' +
-            "</div>",
-         info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
-         infoEmpty: "Menampilkan 0 sampai 0 dari 0 entri",
-         infoFiltered: "(disaring dari _MAX_ entri keseluruhan)",
+         emptyTable: "No data available in table",
+         info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+         infoEmpty: "Tidak ada data untuk ditampilkan",
+         infoFiltered: "(disaring dari _MAX_ data keseluruhan)",
          zeroRecords: "Tidak ditemukan data yang sesuai",
          thousands: ".",
          infoThousands: ".",
@@ -430,8 +468,9 @@ const DatatableServerSide = ({ ...content }) => {
       initComplete: (e) => {
          lozad().observe();
       },
-      drawCallback: (e) => {
+      drawCallback: (settings) => {
          lozad().observe();
+         $(settings.nTBody).find(".dataTables_empty").html("Tidak ada data yang tersedia pada tabel ini");
       },
       createdRow: content.createdRow,
       dom:
@@ -441,108 +480,6 @@ const DatatableServerSide = ({ ...content }) => {
          "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
          ">",
    });
-
-   const DataTable = $.fn.dataTable;
-   DataTable.ext.renderer.pageButton.bootstrap = createPaginationButton;
-};
-
-const clickHandlerPagination = (e, settings) => {
-   e.preventDefault();
-   const api = new $.fn.dataTable.Api(settings);
-   if (!$(e.currentTarget).hasClass("disabled") && api.page() != e.data.action) {
-      api.page(e.data.action).draw("page");
-   }
-};
-
-const renderPaginationButton = (settings, container, button, btnDisplay, btnClass, counter) => {
-   const aria = settings.oLanguage.oAria.paginate || {};
-   const classes = settings.oClasses;
-
-   const node = $("<li>", {
-      id: `${settings.sTableId}_${button}`,
-      class: `${classes.sPageButton} ${btnClass} hover-scale`,
-   })
-      .append(
-         $("<a>", {
-            tabindex: settings.iTabIndex,
-            class: "page-link hover-scale",
-            href: "#",
-            "aria-controls": settings.sTableId,
-            "aria-label": aria[button],
-            "data-dt-idx": counter,
-         }).append(btnDisplay)
-      )
-      .appendTo(container);
-   settings.oApi._fnBindAction(node, { action: button }, (e) => clickHandlerPagination(e, settings));
-};
-
-const paginationButtonDisplay = (button, lang) => {
-   switch (button) {
-      case "ellipsis":
-         return "&#x2026;";
-      case "first":
-         return lang.sFirst;
-      case "previous":
-         return lang.sPrevious;
-      case "next":
-         return lang.sNext;
-      case "last":
-         return lang.sLast;
-      default:
-         return button + 1;
-   }
-};
-
-const paginationButtonClass = (button, page, pages) => {
-   switch (button) {
-      case "ellipsis":
-         return "disabled";
-      case "first":
-         return button + (page > 0 ? "" : " disabled");
-      case "previous":
-         return button + (page > 0 ? "" : " disabled");
-      case "next":
-         return button + (page < pages - 1 ? "" : " disabled");
-      case "last":
-         return button + (page < pages - 1 ? "" : " disabled");
-      default:
-         return page === button ? "active" : "";
-   }
-};
-
-const attachPaginationButtons = (container, buttons, settings, page, pages) => {
-   const lang = settings.oLanguage.oPaginate;
-
-   let counter = 0;
-   for (let i = 0, ien = buttons.length; i < ien; i++) {
-      if (Array.isArray(buttons[i])) {
-         attachPaginationButtons(container, buttons[i], settings, page, pages);
-      } else {
-         const btnDisplay = paginationButtonDisplay(buttons[i], lang);
-         const btnClass = paginationButtonClass(buttons[i], page, pages);
-
-         if (btnDisplay) {
-            renderPaginationButton(settings, container, buttons[i], btnDisplay, btnClass, counter);
-            counter++;
-         }
-      }
-   }
-};
-
-const createPaginationButton = (settings, host, idx, buttons, page, pages) => {
-   let activeEl;
-
-   try {
-      activeEl = $(host).find(document.activeElement).data("dt-idx");
-   } catch (e) {
-      notification(false, e);
-   }
-
-   attachPaginationButtons($(host).empty().html('<ul class="pagination"/>').children("ul"), buttons, settings, page, pages);
-
-   if (activeEl !== undefined) {
-      $(host).find(`[data-dt-idx=${activeEl}]`).trigger("focus");
-   }
 };
 
 export const handleFilterDatatable = (url, content = {}) => {

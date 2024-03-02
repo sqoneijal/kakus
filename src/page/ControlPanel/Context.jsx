@@ -1,4 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
+import "~/assets/css/datatables.bundle.css";
+
+import React, { useState } from "react";
 import { Bars } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -15,12 +17,6 @@ const Context = () => {
 
    // string
    const [toolbarFilter, setToolbarFilter] = useState("");
-
-   useLayoutEffect(() => {
-      bodyInit();
-      appRootInit();
-      return () => {};
-   }, []);
 
    const props = { toolbarFilter, setToolbarFilter };
 
@@ -63,27 +59,3 @@ const Context = () => {
    );
 };
 export default Context;
-
-const bodyInit = () => {
-   const body = document.body;
-   body.classList.add("app-default");
-   body.setAttribute("data-kt-app-layout", "light-sidebar");
-   body.setAttribute("data-kt-app-header-fixed", true);
-   body.setAttribute("data-kt-app-sidebar-enabled", true);
-   body.setAttribute("data-kt-app-sidebar-fixed", true);
-   body.setAttribute("data-kt-app-sidebar-hoverable", true);
-   body.setAttribute("data-kt-app-sidebar-push-header", true);
-   body.setAttribute("data-kt-app-sidebar-push-toolbar", true);
-   body.setAttribute("data-kt-app-sidebar-push-footer", true);
-   body.setAttribute("data-kt-app-toolbar-enabled", true);
-   body.setAttribute("data-kt-app-footer-fixed", true);
-   body.setAttribute("data-kt-app-toolbar-fixed", true);
-};
-
-const appRootInit = () => {
-   const div = document.querySelector("#kt_app_root");
-   div.classList.add("d-flex");
-   div.classList.add("flex-column");
-   div.classList.add("flex-root");
-   div.classList.add("app-root");
-};

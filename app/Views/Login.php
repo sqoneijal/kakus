@@ -12,8 +12,8 @@
    ?>
 </head>
 
-<body id="kt_body">
-   <div id="kt_app_root"></div>
+<body id="kt_body" class="app-blank bgi-size-cover bgi-attachment-fixed bgi-position-center bgi-no-repeat" style="background: url(/getfile/login-bg.jpg);">
+   <div id="kt_app_root" class="d-flex flex-column flex-root"></div>
    <?php echo $webpack_js; ?>
 </body>
 

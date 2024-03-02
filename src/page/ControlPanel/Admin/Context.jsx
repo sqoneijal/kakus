@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 
 const Dashboard = React.lazy(() => import("./Dashboard/Context"));
 const Profile = React.lazy(() => import("./Profile/Context"));
+const ReferensiJenisSeptiktank = React.lazy(() => import("./Referensi/JenisSeptiktank/Context"));
+const Responden = React.lazy(() => import("./Responden/Context"));
 
 const Context = () => {
    return (
@@ -27,6 +29,10 @@ const Context = () => {
                <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="profile" element={<Profile />} />
+                  <Route path="responden" element={<Responden />} />
+                  <Route path="referensi">
+                     <Route path="jenisseptiktank" element={<ReferensiJenisSeptiktank />} />
+                  </Route>
                </Routes>
             </Container>
          </div>

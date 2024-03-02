@@ -68,7 +68,12 @@ abstract class BaseController extends Controller
       $params['webpack_css'] = $this->generateWebpackCss();
       $params['webpack_js'] = $this->generateWebpackJs();
 
-      echo View('Template', $params);
+      $session = \Config\Services::session();
+      if (!$session->get('id_user') && !$session->get('username') && !$session->get('email')) {
+         echo View('Login', $params);
+      } else {
+         echo View('ControlPanel', $params);
+      }
    }
 
    public function generateWebpackCss(): string

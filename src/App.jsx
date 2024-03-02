@@ -66,16 +66,14 @@ const App = () => {
                   wrapperClass="page-loader flex-column bg-dark bg-opacity-25"
                />
             }>
-            <div className="d-flex flex-column flex-column-fluid flex-lg-row">
-               <Show>
-                  <Show.When isTrue={h.objLength(init)}>
-                     <ControlPanel />
-                  </Show.When>
-                  <Show.Else>
-                     <Login />
-                  </Show.Else>
-               </Show>
-            </div>
+            <Show>
+               <Show.When isTrue={h.objLength(init)}>
+                  <ControlPanel />
+               </Show.When>
+               <Show.Else>
+                  <Login />
+               </Show.Else>
+            </Show>
          </React.Suspense>
       )
    );
