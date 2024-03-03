@@ -107,7 +107,7 @@ class Common extends Model
    private function prepareBiodataResponden(int $id_responden): array
    {
       $table = $this->db->table('tb_responden tr');
-      $table->select('tr.id, tr.nama_lengkap, tr.nama_kepala_keluarga, tr.nik, tr.id_desa, tmd.nama as desa, tmd.id_kecamatan, tmk.nama as kecamatan, tmk.id_kabkota, tmk2.nama as kabkota, tmk2.id_provinsi, tmp.nama as provinsi, tr.alamat, tr.kode_pos, tr.id_kepemilikan_rumah, tr.id_koordinat, tkr.nik as nik_pemilik_rumah, tkr.nama_lengkap as nama_pemilik_rumah');
+      $table->select('tr.id, tr.nama_lengkap, tr.nama_kepala_keluarga, tr.nik, tr.id_desa, tmd.nama as desa, tmd.id_kecamatan, tmk.nama as kecamatan, tmk.id_kabkota, tmk2.nama as kabkota, tmk2.id_provinsi, tmp.nama as provinsi, tr.alamat, tr.kode_pos, tr.id_kepemilikan_rumah, tr.id_koordinat, tkr.nik as nik_kepemilikan, tkr.nama_lengkap as nama_kepemilikan');
       $table->join('tb_mst_desa tmd', 'tmd.id = tr.id_desa', 'left');
       $table->join('tb_mst_kecamatan tmk', 'tmk.id = tmd.id_kecamatan', 'left');
       $table->join('tb_mst_kabkota tmk2', 'tmk2.id = tmk.id_kabkota', 'left');

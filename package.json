@@ -3,7 +3,7 @@
       "esbuild": "0.20.1"
    },
    "scripts": {
-      "dev": "esbuild --define:process.env.NODE_ENV=\\\"development\\\" ./src/App.jsx --bundle --watch --serve=8081 --alias:~=./src --outdir=./public/bundle --loader:.svg=copy --loader:.eot=copy --loader:.png=dataurl --loader:.woff=copy --loader:.woff2=copy --loader:.ttf=copy --sourcemap --log-limit=0 --loader=jsx",
+      "dev": "esbuild --define:process.env.NODE_ENV=\\\"development\\\" ./src/App.jsx --bundle --watch --serve=8081 --alias:~=./src --outdir=./public/bundle --loader:.svg=copy --loader:.eot=copy --loader:.png=dataurl --loader:.woff=copy --loader:.woff2=copy --loader:.ttf=copy --sourcemap --log-limit=0 --loader=jsx --inject:./src/assets/js/leaflet.js",
       "build": "./esbuild.config.js"
    },
    "dependencies": {

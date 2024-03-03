@@ -9,12 +9,6 @@ class Login extends BaseConfig
 
    public function render($routes): void
    {
-      $this->defaultRoutes($routes);
-      $this->alternative($routes);
-   }
-
-   public function alternative($routes): void
-   {
       $routes->group('login', function ($routes) {
          $this->defaultRoutes($routes);
       });

@@ -9,13 +9,23 @@ class ControlPanel extends BaseConfig
 
    public function render($routes): void
    {
-      $routes->group('/', ['filter' => 'ControlPanel'], function ($routes) {
-         $routes->get('/', 'ControlPanel::index');
-         $routes->get('initpage', 'ControlPanel::initPage');
+      $routes->get('/', 'ControlPanel::index');
+      $routes->get('initpage', 'ControlPanel::initPage');
 
+      $routes->group('/', ['filter' => 'ControlPanel'], function ($routes) {
          $this->profile($routes);
          $this->referensi($routes);
          $this->responden($routes);
+         $this->penampungan($routes);
+      });
+   }
+
+   private function penampungan($routes): void
+   {
+      $routes->group('penampungan', ['filter' => 'ControlPanel', 'namespace' => 'App\Controllers\ControlPanel'], function ($routes) {
+         $routes->get('/', 'Penampungan::index');
+
+         $routes->post('getdata', 'Penampungan::getData');
       });
    }
 
@@ -23,6 +33,7 @@ class ControlPanel extends BaseConfig
    {
       $routes->group('responden', ['filter' => 'ControlPanel', 'namespace' => 'App\Controllers\ControlPanel'], function ($routes) {
          $routes->get('/', 'Responden::index');
+         $routes->get('dummy', 'Responden::dummy');
          $routes->get('getdaftarprovinsi', 'Responden::getDaftarProvinsi');
          $routes->get('getdaftarkabkota', 'Responden::getDaftarKabkota');
          $routes->get('getdaftarkecamatan', 'Responden::getDaftarKecamatan');

@@ -23,5 +23,11 @@
       "icon": "ki-outline ki-people fs-2",
       "pathname": "/responden",
       "sub": false
+   },
+   {
+      "label": "Penampungan",
+      "icon": "ki-outline ki-basket-ok fs-2",
+      "pathname": "/penampungan",
+      "sub": false
    }
 ]

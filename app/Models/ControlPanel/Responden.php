@@ -121,8 +121,6 @@ class Responden extends Common
             }
          }
 
-
-
          $data['id_koordinat'] = $this->insertKoordinat($post);
          $data['user_modified'] = $post['user_modified'];
 
@@ -131,11 +129,19 @@ class Responden extends Common
             $data['uploaded'] = new RawSql('now()');
 
             $table->insert($data);
+
+            $post['id_responden'] = $this->db->insertID();
          } elseif ($post['pageType'] === 'update') {
             $data['modified'] = new RawSql('now()');
 
             $table->where('id', $post['id']);
             $table->update($data);
+
+            $post['id_responden'] = $post['id'];
+         }
+
+         if (intval($data['id_kepemilikan_rumah']) !== 1) {
+            $this->handleKepemilikanRumah($post);
          }
 
          if ($this->db->transStatus() === false) {
@@ -152,14 +158,69 @@ class Responden extends Common
       return $response;
    }
 
+   private function handleKepemilikanRumah(array $post): void
+   {
+      $check = $this->checkKepemilikanRumah($post['id_responden']);
+
+      $table = $this->db->table('tb_kepemilikan_rumah');
+      if ($check > 0) {
+         $table->where('id_responden', $post['id_responden']);
+         $table->update([
+            'nik' => $post['nik_kepemilikan'],
+            'nama_lengkap' => $post['nama_kepemilikan']
+         ]);
+      } else {
+         $table->insert([
+            'id_responden' => $post['id_responden'],
+            'nik' => $post['nik_kepemilikan'],
+            'nama_lengkap' => $post['nama_kepemilikan']
+         ]);
+      }
+   }
+
+   private function checkKepemilikanRumah(int $id_responden): int
+   {
+      $table = $this->db->table('tb_kepemilikan_rumah');
+      $table->where('id_responden', $id_responden);
+
+      return $table->countAllResults();
+   }
+
    private function insertKoordinat(array $post): int
    {
+      $checkExistKoordinat = $this->checkExistKoordinat($post);
+
+      if (intval($checkExistKoordinat['jumlah']) > 0) {
+         return $checkExistKoordinat['id'];
+      } else {
+         $table = $this->db->table('tb_koordinat');
+         $table->ignore(true)->insert([
+            'longitude' => $post['longitude'],
+            'latitude' => $post['latitude'],
+         ]);
+         return $this->db->insertID();
+      }
+   }
+
+   private function checkExistKoordinat(array $post): array
+   {
       $table = $this->db->table('tb_koordinat');
-      $table->ignore(true)->insert([
-         'longitude' => $post['longitude'],
-         'latitude' => $post['latitude'],
-      ]);
-      return $this->db->insertID();
+      $table->select('id, count(*) as jumlah');
+      $table->where('latitude', $post['latitude']);
+      $table->where('longitude', $post['longitude']);
+
+      $get = $table->get();
+      $data = $get->getRowArray();
+      $fieldNames = $get->getFieldNames();
+      $get->freeResult();
+
+      $response = [];
+      if (isset($data)) {
+         foreach ($fieldNames as $field) {
+            $response[$field] = ($data[$field] ? trim($data[$field]) : (string) $data[$field]);
+         }
+      }
+      return $response;
    }
 
    public function getData(array $post): array

@@ -7,8 +7,11 @@ const Dashboard = React.lazy(() => import("./Dashboard/Context"));
 const Profile = React.lazy(() => import("./Profile/Context"));
 const ReferensiJenisSeptiktank = React.lazy(() => import("./Referensi/JenisSeptiktank/Context"));
 const Responden = React.lazy(() => import("./Responden/Context"));
+const Penampungan = React.lazy(() => import("./Penampungan/Context"));
 
-const Context = () => {
+const Context = ({ setToolbarFilter }) => {
+   const props = { setToolbarFilter };
+
    return (
       <React.Suspense
          fallback={
@@ -30,6 +33,7 @@ const Context = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="profile" element={<Profile />} />
                   <Route path="responden" element={<Responden />} />
+                  <Route path="penampungan" element={<Penampungan {...props} />} />
                   <Route path="referensi">
                      <Route path="jenisseptiktank" element={<ReferensiJenisSeptiktank />} />
                   </Route>

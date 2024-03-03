@@ -1,4 +1,5 @@
 import "~/assets/css/datatables.bundle.css";
+import "~/assets/css/leaflet.css";
 
 import React, { useState } from "react";
 import { Bars } from "react-loader-spinner";
@@ -46,7 +47,7 @@ const Context = () => {
                            <LayoutPartialsToolbar {...props} />
                            <Switch condition={h.parse("role", init)}>
                               <Case value={1}>
-                                 <Admin />
+                                 <Admin {...props} />
                               </Case>
                            </Switch>
                         </div>

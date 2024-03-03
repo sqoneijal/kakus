@@ -18,6 +18,59 @@ class Responden extends BaseController
       $this->template($this->data);
    }
 
+   public function dummy()
+   {
+      $faker = \Faker\Factory::create();
+      $db = \Config\Database::connect();
+
+      for ($i = 0; $i < 100; $i++) {
+         $koordinat = $db->table('tb_koordinat');
+         $koordinat->ignore(true)->insert([
+            'latitude' => $faker->latitude(),
+            'longitude' => $faker->longitude(),
+         ]);
+
+         $id_koordinat = $db->insertID();
+
+         $responden = $db->table('tb_responden');
+         $responden->insert([
+            'nama_lengkap' => $faker->name,
+            'nama_kepala_keluarga' => $faker->name,
+            'nik' => $faker->numerify('################'),
+            'id_desa' => $faker->numberBetween(1101012001, 9271101004),
+            'alamat' => $faker->streetAddress(),
+            'kode_pos' => $faker->numerify('#####'),
+            'id_kepemilikan_rumah' => $faker->numberBetween(1, 6),
+            'id_koordinat' => $id_koordinat
+         ]);
+
+         $id_responden = $db->insertID();
+
+         $volume = $db->table('tb_volume_septiktank');
+         $volume->insert([
+            'panjang' => $faker->randomDigitNotNull(),
+            'lebar' => $faker->randomDigitNotNull(),
+            'kedalaman' => $faker->randomDigitNotNull(),
+            'diameter_tabung' => $faker->randomDigitNotNull(),
+            'id_jenis_septiktank' => $faker->numberBetween(6, 12),
+            'id_responden' => $id_responden
+         ]);
+
+         $id_volume = $db->insertID();
+
+         $penampungan = $db->table('tb_penampungan_tinja');
+         $penampungan->insert([
+            'id_responden' => $id_responden,
+            'kala_penyedotan' => 2022,
+            'pembangunan' => 2021,
+            'id_volume_septiktank' => $id_volume,
+            'harga_penyedotan' => 300000,
+            'tanggal_penyedotan_terakhir' => '2022-01-01',
+            'tanggal_rencana_penyedotan' => date('Y-m-d')
+         ]);
+      }
+   }
+
    public function hapusPenampunganTinja(): object
    {
       $response = ['status' => false, 'errors' => [], 'msg_response' => 'Terjadi sesuatu kesalahan.'];

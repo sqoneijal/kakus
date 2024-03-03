@@ -28,7 +28,7 @@ class ControlPanel implements FilterInterface
       $session = \Config\Services::session();
 
       if (!$session->get('id_user') && !$session->get('username') && !$session->get('email')) {
-         return redirect()->to('/');
+         return redirect()->to('login');
       }
    }
 
