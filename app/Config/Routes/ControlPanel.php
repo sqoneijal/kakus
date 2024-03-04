@@ -10,7 +10,7 @@ class ControlPanel extends BaseConfig
    public function render($routes): void
    {
       $routes->get('/', 'ControlPanel::index');
-      $routes->get('initpage', 'ControlPanel::initPage');
+      $routes->get('getdaftarpenampungan', 'ControlPanel::getPenampungan');
 
       $routes->group('/', ['filter' => 'ControlPanel'], function ($routes) {
          $this->profile($routes);
@@ -24,6 +24,7 @@ class ControlPanel extends BaseConfig
    {
       $routes->group('penampungan', ['filter' => 'ControlPanel', 'namespace' => 'App\Controllers\ControlPanel'], function ($routes) {
          $routes->get('/', 'Penampungan::index');
+         $routes->get('getpeta', 'Penampungan::getPeta');
 
          $routes->post('getdata', 'Penampungan::getData');
       });

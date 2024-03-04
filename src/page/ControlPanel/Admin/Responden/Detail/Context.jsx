@@ -61,7 +61,11 @@ const Context = ({ daftarKepemilikanRumah }) => {
 
          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-         L.marker([latitude, longitude]).addTo(map).bindPopup(h.parse("nama_lengkap", detailContent)).openPopup();
+         const markerIcon = L.icon({
+            iconUrl: "/bundle/marker-icon.png",
+            iconSize: [40, 40],
+         });
+         L.marker([latitude, longitude], { icon: markerIcon }).addTo(map).bindPopup(h.parse("nama_lengkap", detailContent)).openPopup();
       }
       return () => {};
    }, [openDetail, detailContent]);

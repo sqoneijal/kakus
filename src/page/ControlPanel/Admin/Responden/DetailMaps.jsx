@@ -18,11 +18,16 @@ const DetailMaps = () => {
 
    useLayoutEffect(() => {
       if (openDetailMaps && h.objLength(detailContent)) {
+         const markerIcon = L.icon({
+            iconUrl: "/bundle/marker-icon.png",
+            iconSize: [40, 40],
+         });
+
          map = L.map("maps-detail").setView([h.parse("latitude", detailContent), h.parse("longitude", detailContent)], 100);
 
          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-         L.marker([h.parse("latitude", detailContent), h.parse("longitude", detailContent)])
+         L.marker([h.parse("latitude", detailContent), h.parse("longitude", detailContent)], { icon: markerIcon })
             .addTo(map)
             .bindPopup(h.parse("nama_lengkap", detailContent))
             .openPopup();

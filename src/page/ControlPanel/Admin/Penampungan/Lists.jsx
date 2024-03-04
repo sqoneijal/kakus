@@ -98,7 +98,7 @@ const Lists = () => {
       const statusPenyedotan = {
          "": `<span class="badge badge-warning">Belum dilakukan</span>`,
          1: `<span class="badge badge-success">Sudah dilakukan</span>`,
-         2: `<span class="badge badge-success">Tolak</span>`,
+         2: `<span class="badge badge-danger">Tolak</span>`,
       };
 
       return `<div class="row">

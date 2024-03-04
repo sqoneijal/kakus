@@ -18,6 +18,13 @@ class Penampungan extends BaseController
       $this->template($this->data);
    }
 
+   public function getPeta(): object
+   {
+      $model = new Model();
+      $content = $model->getPeta($this->getVar);
+      return $this->respond($content);
+   }
+
    public function submit(): object
    {
       $response = ['status' => false, 'errors' => []];
