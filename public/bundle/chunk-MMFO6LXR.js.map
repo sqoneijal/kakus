@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/Show.jsx"],
+  "sourcesContent": ["import { Children } from \"react\";\n\nexport const Show = (props) => {\n   let when = null;\n   let otherWise = null;\n\n   Children.forEach(props.children, (children) => {\n      if (children.props.isTrue === undefined) {\n         otherWise = children;\n      } else if (!when && children.props.isTrue === true) {\n         when = children;\n      }\n   });\n\n   return when || otherWise;\n};\n\nShow.When = ({ isTrue, children }) => isTrue && children;\nShow.Else = ({ render, children }) => render || children;\n"],
+  "mappings": "sDAAA,IAAAA,EAAA,OAAAC,EAAyB,OAEZC,EAAQC,GAAU,CAC5B,IAAIC,EAAO,KACPC,EAAY,KAEhB,kBAAS,QAAQF,EAAM,SAAWG,GAAa,CACxCA,EAAS,MAAM,SAAW,OAC3BD,EAAYC,EACJ,CAACF,GAAQE,EAAS,MAAM,SAAW,KAC3CF,EAAOE,EAEb,CAAC,EAEMF,GAAQC,CAClB,EAEAH,EAAK,KAAO,CAAC,CAAE,OAAAK,EAAQ,SAAAD,CAAS,IAAMC,GAAUD,EAChDJ,EAAK,KAAO,CAAC,CAAE,OAAAM,EAAQ,SAAAF,CAAS,IAAME,GAAUF",
+  "names": ["import_leaflet", "import_react", "Show", "props", "when", "otherWise", "children", "isTrue", "render"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/page/ControlPanel/Admin/Dashboard/Context.jsx"],
+  "sourcesContent": ["import React from \"react\";\nimport { Bars } from \"react-loader-spinner\";\n\nconst DaftarPenampungan = React.lazy(() => import(\"./DaftarPenampungan\"));\n\nconst Context = () => {\n   return (\n      <React.Suspense\n         fallback={\n            <Bars\n               visible={true}\n               color=\"#4fa94d\"\n               radius=\"9\"\n               wrapperStyle={{\n                  alignItems: \"center\",\n                  display: \"flex\",\n                  justifyContent: \"center\",\n               }}\n               wrapperClass=\"page-loader flex-column bg-dark bg-opacity-25\"\n            />\n         }>\n         <DaftarPenampungan />\n      </React.Suspense>\n   );\n};\nexport default Context;\n"],
+  "mappings": "0HAAA,IAAAA,EAAA,OAAAC,EAAkB,OAGlB,IAAMC,EAAoB,EAAAC,QAAM,KAAK,IAAM,OAAO,iCAAqB,CAAC,EAElEC,EAAU,IAEV,EAAAD,QAAA,cAAC,EAAAA,QAAM,SAAN,CACE,SACG,EAAAA,QAAA,cAACE,EAAA,CACE,QAAS,GACT,MAAM,UACN,OAAO,IACP,aAAc,CACX,WAAY,SACZ,QAAS,OACT,eAAgB,QACnB,EACA,aAAa,gDAChB,GAEH,EAAAF,QAAA,cAACD,EAAA,IAAkB,CACtB,EAGCI,EAAQF",
+  "names": ["import_pace_min", "import_react", "DaftarPenampungan", "React", "Context", "$7dd1b251b360e95a$export$fbc7d6f7dd821b47", "Context_default"]
+}

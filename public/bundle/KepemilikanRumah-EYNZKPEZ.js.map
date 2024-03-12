@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/page/ControlPanel/Admin/Responden/Detail/KepemilikanRumah.jsx"],
+  "sourcesContent": ["import React from \"react\";\nimport { Col, Row } from \"react-bootstrap\";\nimport { useSelector } from \"react-redux\";\nimport * as h from \"~/Helpers\";\n\nconst KepemilikanRumah = () => {\n   const { module } = useSelector((e) => e.redux);\n   const { biodataResponden } = module;\n\n   return (\n      h.parse(\"id_kepemilikan_rumah\", biodataResponden) !== 1 && (\n         <Row className=\"mt-10\">\n            <h4>Kepemilikan Rumah/Bangunan</h4>\n            <Col>{h.detail_label(\"NIK\", h.parse(\"nik_pemilik_rumah\", biodataResponden))}</Col>\n            <Col>{h.detail_label(\"Nama Lengkap\", h.parse(\"nama_pemilik_rumah\", biodataResponden))}</Col>\n         </Row>\n      )\n   );\n};\nexport default KepemilikanRumah;\n"],
+  "mappings": "2QAAA,IAAAA,EAAA,OAAAC,EAAkB,OAKlB,IAAMC,EAAmB,IAAM,CAC5B,GAAM,CAAE,OAAAC,CAAO,EAAIC,EAAaC,GAAMA,EAAE,KAAK,EACvC,CAAE,iBAAAC,CAAiB,EAAIH,EAE7B,OACKI,EAAM,uBAAwBD,CAAgB,IAAM,GACnD,EAAAE,QAAA,cAACC,EAAA,CAAI,UAAU,SACZ,EAAAD,QAAA,cAAC,UAAG,4BAA0B,EAC9B,EAAAA,QAAA,cAACE,EAAA,KAAOC,EAAa,MAASJ,EAAM,oBAAqBD,CAAgB,CAAC,CAAE,EAC5E,EAAAE,QAAA,cAACE,EAAA,KAAOC,EAAa,eAAkBJ,EAAM,qBAAsBD,CAAgB,CAAC,CAAE,CACzF,CAGT,EACOM,EAAQV",
+  "names": ["import_leaflet", "import_react", "KepemilikanRumah", "module", "useSelector", "e", "biodataResponden", "parse", "React", "Row_default", "Col_default", "detail_label", "KepemilikanRumah_default"]
+}

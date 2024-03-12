@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/page/ControlPanel/Admin/Profile/Logs/Context.jsx"],
+  "sourcesContent": ["import React from \"react\";\nimport { Bars } from \"react-loader-spinner\";\n\nconst LoginSession = React.lazy(() => import(\"./LoginSession\"));\n\nconst Context = () => {\n   return (\n      <React.Suspense\n         fallback={\n            <Bars\n               visible={true}\n               color=\"#4fa94d\"\n               radius=\"9\"\n               wrapperStyle={{\n                  alignItems: \"center\",\n                  display: \"flex\",\n                  justifyContent: \"center\",\n               }}\n               wrapperClass=\"page-loader flex-column bg-dark bg-opacity-25\"\n            />\n         }>\n         <LoginSession />\n      </React.Suspense>\n   );\n};\nexport default Context;\n"],
+  "mappings": "0HAAA,IAAAA,EAAA,OAAAC,EAAkB,OAGlB,IAAMC,EAAe,EAAAC,QAAM,KAAK,IAAM,OAAO,4BAAgB,CAAC,EAExDC,EAAU,IAEV,EAAAD,QAAA,cAAC,EAAAA,QAAM,SAAN,CACE,SACG,EAAAA,QAAA,cAACE,EAAA,CACE,QAAS,GACT,MAAM,UACN,OAAO,IACP,aAAc,CACX,WAAY,SACZ,QAAS,OACT,eAAgB,QACnB,EACA,aAAa,gDAChB,GAEH,EAAAF,QAAA,cAACD,EAAA,IAAa,CACjB,EAGCI,EAAQF",
+  "names": ["import_leaflet", "import_react", "LoginSession", "React", "Context", "$7dd1b251b360e95a$export$fbc7d6f7dd821b47", "Context_default"]
+}

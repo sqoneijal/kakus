@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/layout/partials/sidebar/Logo.jsx"],
+  "sourcesContent": ["import lozad from \"lozad\";\nimport React, { useLayoutEffect } from \"react\";\nimport { Link } from \"react-router-dom\";\n\nconst Logo = () => {\n   useLayoutEffect(() => {\n      lozad().observe();\n      return () => {};\n   }, []);\n\n   return (\n      <div className=\"app-sidebar-logo px-6\" id=\"kt_app_sidebar_logo\">\n         <Link to={\"/\"}>\n            <img alt=\"Koperasi\" data-src=\"/getfile/logo.png\" className=\"h-25px app-sidebar-logo-default theme-light-show lozad\" />\n            <img alt=\"Koperasi\" data-src=\"/getfile/logo.png\" className=\"h-25px app-sidebar-logo-default theme-dark-show lozad\" />\n            <img alt=\"Koperasi\" data-src=\"/getfile/small-logo.png\" className=\"h-20px app-sidebar-logo-minimize lozad\" />\n         </Link>\n      </div>\n   );\n};\nexport default Logo;\n"],
+  "mappings": "6JAAA,IAAAA,EAAA,OAAAC,EAAkB,OAClBC,EAAuC,OAGvC,IAAMC,EAAO,QACV,mBAAgB,QACb,EAAAC,SAAM,EAAE,QAAQ,EACT,IAAM,CAAC,GACd,CAAC,CAAC,EAGF,EAAAC,QAAA,cAAC,OAAI,UAAU,wBAAwB,GAAG,uBACvC,EAAAA,QAAA,cAACC,EAAA,CAAK,GAAI,KACP,EAAAD,QAAA,cAAC,OAAI,IAAI,WAAW,WAAS,oBAAoB,UAAU,yDAAyD,EACpH,EAAAA,QAAA,cAAC,OAAI,IAAI,WAAW,WAAS,oBAAoB,UAAU,wDAAwD,EACnH,EAAAA,QAAA,cAAC,OAAI,IAAI,WAAW,WAAS,0BAA0B,UAAU,yCAAyC,CAC7G,CACH,GAGCE,EAAQJ",
+  "names": ["import_leaflet", "import_lozad", "import_react", "Logo", "lozad", "React", "Link", "Logo_default"]
+}

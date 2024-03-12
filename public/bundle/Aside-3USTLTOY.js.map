@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/page/Login/Aside.jsx"],
+  "sourcesContent": ["import lozad from \"lozad\";\nimport React, { useLayoutEffect } from \"react\";\n\nconst Aside = () => {\n   useLayoutEffect(() => {\n      lozad().observe();\n      return () => {};\n   }, []);\n\n   return (\n      <div className=\"d-flex flex-center w-lg-50 pt-15 pt-lg-0 px-10\">\n         <div className=\"d-flex flex-center flex-lg-start flex-column\">\n            <span className=\"mb-7\">\n               <img alt=\"KAKUS\" className=\"lozad\" data-src=\"/getfile/logo.png\" />\n            </span>\n            <h2 className=\"text-white fw-normal m-0\">Kakus Terkelola, Masyarakat Sehat: Solusi Informasi Praktis untuk WC Anda!</h2>\n         </div>\n      </div>\n   );\n};\nexport default Aside;\n"],
+  "mappings": "8FAAA,IAAAA,EAAA,OAAAC,EAAkB,OAClBC,EAAuC,OAEjCC,EAAQ,QACX,mBAAgB,QACb,EAAAC,SAAM,EAAE,QAAQ,EACT,IAAM,CAAC,GACd,CAAC,CAAC,EAGF,EAAAC,QAAA,cAAC,OAAI,UAAU,kDACZ,EAAAA,QAAA,cAAC,OAAI,UAAU,gDACZ,EAAAA,QAAA,cAAC,QAAK,UAAU,QACb,EAAAA,QAAA,cAAC,OAAI,IAAI,QAAQ,UAAU,QAAQ,WAAS,oBAAoB,CACnE,EACA,EAAAA,QAAA,cAAC,MAAG,UAAU,4BAA2B,4EAA0E,CACtH,CACH,GAGCC,EAAQH",
+  "names": ["import_leaflet", "import_lozad", "import_react", "Aside", "lozad", "React", "Aside_default"]
+}

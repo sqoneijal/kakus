@@ -16,7 +16,7 @@ build({
    jsxSideEffects: true,
    splitting: true,
    outdir: "./public/bundle",
-   inject: ["./src/assets/js/pace.min.js"],
+   inject: ["./src/assets/js/leaflet.js"],
    loader: {
       ".js": "jsx",
       ".png": "copy",

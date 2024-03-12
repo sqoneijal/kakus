@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/page/ControlPanel/Admin/Responden/Detail/Koordinat.jsx"],
+  "sourcesContent": ["import React from \"react\";\nimport { Col, Row } from \"react-bootstrap\";\nimport { useSelector } from \"react-redux\";\nimport * as h from \"~/Helpers\";\n\nconst Koordinat = () => {\n   const { module } = useSelector((e) => e.redux);\n   const { koordinatRumah } = module;\n\n   return (\n      <Row className=\"mt-10\">\n         <h4>Koordinat Lokasi Rumah</h4>\n         <Col>{h.detail_label(\"Latitude\", h.toInt(h.parse(\"latitude\", koordinatRumah)))}</Col>\n         <Col>{h.detail_label(\"Longitude\", h.toInt(h.parse(\"longitude\", koordinatRumah)))}</Col>\n      </Row>\n   );\n};\nexport default Koordinat;\n"],
+  "mappings": "kRAAA,IAAAA,EAAA,OAAAC,EAAkB,OAKlB,IAAMC,EAAY,IAAM,CACrB,GAAM,CAAE,OAAAC,CAAO,EAAIC,EAAaC,GAAMA,EAAE,KAAK,EACvC,CAAE,eAAAC,CAAe,EAAIH,EAE3B,OACG,EAAAI,QAAA,cAACC,EAAA,CAAI,UAAU,SACZ,EAAAD,QAAA,cAAC,UAAG,wBAAsB,EAC1B,EAAAA,QAAA,cAACE,EAAA,KAAOC,EAAa,WAAcC,EAAQC,EAAM,WAAYN,CAAc,CAAC,CAAC,CAAE,EAC/E,EAAAC,QAAA,cAACE,EAAA,KAAOC,EAAa,YAAeC,EAAQC,EAAM,YAAaN,CAAc,CAAC,CAAC,CAAE,CACpF,CAEN,EACOO,EAAQX",
+  "names": ["import_pace_min", "import_react", "Koordinat", "module", "useSelector", "e", "koordinatRumah", "React", "Row_default", "Col_default", "detail_label", "toInt", "parse", "Koordinat_default"]
+}

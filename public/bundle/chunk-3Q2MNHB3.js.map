@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/Each.jsx"],
+  "sourcesContent": ["import { Children } from \"react\";\n\nexport const Each = ({ render, of }) => Children.toArray(of.map((item, index) => render(item, index)));\n"],
+  "mappings": "sDAAA,IAAAA,EAAA,OAAAC,EAAyB,OAEZC,EAAO,CAAC,CAAE,OAAAC,EAAQ,GAAAC,CAAG,IAAM,WAAS,QAAQA,EAAG,IAAI,CAACC,EAAMC,IAAUH,EAAOE,EAAMC,CAAK,CAAC,CAAC",
+  "names": ["import_pace_min", "import_react", "Each", "render", "of", "item", "index"]
+}
